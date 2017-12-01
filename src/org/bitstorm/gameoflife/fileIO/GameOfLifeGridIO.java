@@ -1,12 +1,12 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.fileIO;
 
 
 import org.bitstorm.gameoflife.cells.CellGrid;
-import org.bitstorm.gameoflife.cells.GameOfLifeGrid;
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.gameoflife.cells.ShapeException;
 import org.bitstorm.gameoflife.ui.GameOfLifeAWTCellGrid;
 import org.bitstorm.gameoflife.ui.GameOfLifeUserControls;
+import org.bitstorm.gameoflife.uicontrol.AWTGameOfLife;
 import org.bitstorm.util.AlertBox;
 import org.bitstorm.util.EasyFile;
 import org.bitstorm.util.LineEnumerator;
@@ -22,7 +22,7 @@ import java.util.Vector;
 /**
  * File open and save operations for GameOfLifeGrid.
  */
-class GameOfLifeGridIO implements CellGridIO{
+public class GameOfLifeGridIO implements CellGridIO{
 	public final String FILE_EXTENSION = ".cells";
 	private CellGrid grid;
 	private String filename;
@@ -31,7 +31,7 @@ class GameOfLifeGridIO implements CellGridIO{
 	/**
 	 * Contructor.
 	 */
-	public GameOfLifeGridIO( AWTGameOfLife game, Frame frame) {
+	public GameOfLifeGridIO(AWTGameOfLife game, Frame frame) {
 		this.game = game;
 		this.grid = game.getGameOfLifeGrid();
 		this.frame = frame;
@@ -51,7 +51,24 @@ class GameOfLifeGridIO implements CellGridIO{
 	 */
 	@Override
 	public void openShape( String filename ) throws MalformedURLException {
-		openShape(new URL(filename));
+		int col = 0;
+		int row = 0;
+		boolean cell;
+// Cope with different line endings ("\r\n", "\r", "\n")
+		boolean nextLine = false;
+		EasyFile file;
+		try {
+			if ( filename != null ) {
+				file = new EasyFile( filename );
+			} else {
+				file = new EasyFile( frame, "Open Game of Life file" );
+			}
+			openShape( file );
+		} catch (FileNotFoundException e) {
+			new AlertBox( frame, "File not found", "Couldn't open this file.\n"+e.getMessage());
+		} catch (IOException e) {
+			new AlertBox( frame, "File read error", "Couldn't read this file.\n"+e.getMessage());
+		}
 	}
 	
 	/**

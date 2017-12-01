@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife.eventhandler;
+package org.bitstorm.gameoflife.eventhandler.controls;
 
 import org.bitstorm.gameoflife.ui.GameOfLifeUserControls;
 import org.bitstorm.gameoflife.uicontrol.GameOfLifeUserControlsEvent;
@@ -10,9 +10,9 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class SpeedChoiceHandler implements ItemListener {
-	private Vector listeners;
+	private Vector<CellGameUserControlsListener> listeners;
 	
-	public SpeedChoiceHandler(Vector listener){
+	public SpeedChoiceHandler(Vector<CellGameUserControlsListener> listener){
 		this.listeners = listener;
 	}
 	

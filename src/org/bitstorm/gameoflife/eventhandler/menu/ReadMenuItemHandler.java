@@ -1,13 +1,16 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.eventhandler.menu;
+
+import org.bitstorm.gameoflife.uicontrol.AWTGameOfLife;
+import org.bitstorm.gameoflife.fileIO.CellGridIO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 
-public class ReadMenuItemListener implements ActionListener {
+public class ReadMenuItemHandler implements ActionListener {
 	private AWTGameOfLife game;
 	private CellGridIO gridIO;
-	public ReadMenuItemListener(AWTGameOfLife game, CellGridIO gridIO){
+	public ReadMenuItemHandler(AWTGameOfLife game, CellGridIO gridIO){
 		this.game = game;
 		this.gridIO = gridIO;
 	}

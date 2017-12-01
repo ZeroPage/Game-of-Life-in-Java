@@ -1,11 +1,13 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.eventhandler.menu;
+
+import org.bitstorm.gameoflife.fileIO.CellGridIO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WriteMenuItemListener implements ActionListener {
+public class WriteMenuItemHandler implements ActionListener {
 	private CellGridIO gridIO;
-	public WriteMenuItemListener(CellGridIO gridIO){
+	public WriteMenuItemHandler(CellGridIO gridIO){
 		this.gridIO = gridIO;
 	}
 	@Override

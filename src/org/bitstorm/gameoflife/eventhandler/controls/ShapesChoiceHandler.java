@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife.eventhandler;
+package org.bitstorm.gameoflife.eventhandler.controls;
 
 import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
 import org.bitstorm.gameoflife.uicontrol.GameOfLifeUserControlsEvent;
@@ -9,9 +9,9 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class ShapesChoiceHandler implements ItemListener{
-	private Vector listeners;
+	private Vector<CellGameUserControlsListener> listeners;
 	
-	public ShapesChoiceHandler(Vector listener){
+	public ShapesChoiceHandler(Vector<CellGameUserControlsListener> listener){
 		this.listeners = listener;
 	}
 	

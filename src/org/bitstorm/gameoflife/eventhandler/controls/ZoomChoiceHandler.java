@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife.eventhandler;
+package org.bitstorm.gameoflife.eventhandler.controls;
 
 import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
 import org.bitstorm.gameoflife.ui.GameOfLifeUserControls;
@@ -10,9 +10,9 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class ZoomChoiceHandler implements ItemListener {
-	private Vector listeners;
+	private Vector<CellGameUserControlsListener> listeners;
 	
-	public ZoomChoiceHandler(Vector listner){
+	public ZoomChoiceHandler(Vector<CellGameUserControlsListener> listner){
 		this.listeners = listner;
 	}
 	

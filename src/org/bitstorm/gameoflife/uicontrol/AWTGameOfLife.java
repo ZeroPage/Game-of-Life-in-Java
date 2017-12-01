@@ -12,16 +12,13 @@
  *
  */
 
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.uicontrol;
 
 import org.bitstorm.gameoflife.cells.*;
 import org.bitstorm.gameoflife.ui.CellGameUserControls;
 import org.bitstorm.gameoflife.ui.CellGridDrawer;
 import org.bitstorm.gameoflife.ui.GameOfLifeAWTCellGrid;
 import org.bitstorm.gameoflife.ui.GameOfLifeUserControls;
-import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsEvent;
-import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
-import org.bitstorm.gameoflife.uicontrol.GameOfLifeUserControlsEvent;
 
 import java.applet.Applet;
 import java.awt.Color;

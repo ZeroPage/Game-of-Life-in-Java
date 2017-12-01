@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.uicontrol;
 
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;

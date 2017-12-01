@@ -7,10 +7,10 @@
  
 package org.bitstorm.gameoflife.ui;
 
+import org.bitstorm.gameoflife.eventhandler.controls.*;
 import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.gameoflife.cells.ShapeCollection;
-import org.bitstorm.gameoflife.eventhandler.*;
 
 import java.awt.Button;
 import java.awt.Choice;

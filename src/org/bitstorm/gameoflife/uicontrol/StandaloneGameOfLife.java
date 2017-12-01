@@ -7,7 +7,7 @@
  *
  */
 
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.uicontrol;
 
 import java.awt.Color;
 import java.awt.Frame;
@@ -17,9 +17,12 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.net.MalformedURLException;
 
+import org.bitstorm.gameoflife.fileIO.CellGridIO;
+import org.bitstorm.gameoflife.fileIO.GameOfLifeGridIO;
 import org.bitstorm.gameoflife.cells.GameOfLifeGrid;
 import org.bitstorm.gameoflife.cells.ShapeCollection;
 import org.bitstorm.gameoflife.cells.ShapeException;
+import org.bitstorm.gameoflife.eventhandler.MyDropHandler;
 import org.bitstorm.gameoflife.ui.GameOfLifeAWTCellGrid;
 import org.bitstorm.gameoflife.ui.GameOfLifeUserControls;
 import org.bitstorm.util.AlertBox;
@@ -38,6 +41,9 @@ public class StandaloneGameOfLife extends AWTGameOfLife {
 
 	public StandaloneGameOfLife(String[] args){
 		this.args = args;
+		getParams();
+		gameOfLifeGrid = new GameOfLifeGrid(cellCols, cellRows);
+		gridIO = new GameOfLifeGridIO( this, appletFrame);
 	}
 	
 	/**
@@ -47,22 +53,19 @@ public class StandaloneGameOfLife extends AWTGameOfLife {
 	 */
 	public void init( Frame parent ) {
 		appletFrame = parent;
-		getParams();
 
 		// set background colour
 		setBackground(new Color(0x999999));
 
 		// TODO: casten naar interface
 		// create StandAloneGameOfLifeGrid
-		gameOfLifeGrid = new GameOfLifeGrid(cellCols, cellRows);
-		gridIO = new GameOfLifeGridIO( this, appletFrame);
 
 		// create GameOfLifeCanvas
 		gameOfLifeCanvas = new GameOfLifeAWTCellGrid(gameOfLifeGrid, cellSize);
 
 		try {
 			// Make GameOfLifeCanvas a drop target
-			DropTarget dt = new DropTarget( (GameOfLifeAWTCellGrid)gameOfLifeCanvas, DnDConstants.ACTION_COPY_OR_MOVE, new MyDropListener(this, gridIO) );
+			DropTarget dt = new DropTarget( (GameOfLifeAWTCellGrid)gameOfLifeCanvas, DnDConstants.ACTION_COPY_OR_MOVE, new MyDropHandler(this, gridIO) );
 		} catch (NoClassDefFoundError e) {
 			// Ignore. Older Java version don't support dnd
 		}
@@ -89,6 +92,7 @@ public class StandaloneGameOfLife extends AWTGameOfLife {
         controlsContraints.gridx = GridBagConstraints.REMAINDER;
         gridbag.setConstraints((GameOfLifeUserControls)controls, controlsContraints);
         add((GameOfLifeUserControls)controls);
+        
 		setVisible(true);
 		validate();
 	}
@@ -140,7 +144,7 @@ public class StandaloneGameOfLife extends AWTGameOfLife {
 	 * get GameOfLifeGridIO
 	 * @return GameOfLifeGridIO object
 	 */
-	protected CellGridIO getGameOfLifeGridIO() {
+	public CellGridIO getGameOfLifeGridIO() {
 		return gridIO;
 	}
 

@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.eventhandler.menu;
 
 import org.bitstorm.util.AboutDialog;
 
@@ -7,9 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
 
-public class AboutMenuItemListener implements ActionListener {
+public class AboutMenuItemHandler implements ActionListener {
 	private Frame frame;
-	public AboutMenuItemListener(Frame frame){
+	public AboutMenuItemHandler(Frame frame){
 		this.frame = frame;
 	}
 	@Override

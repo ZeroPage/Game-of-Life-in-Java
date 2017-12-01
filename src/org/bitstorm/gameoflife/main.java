@@ -1,7 +1,10 @@
 package org.bitstorm.gameoflife;
 
 import java.net.MalformedURLException;
-import org.bitstorm.gameoflife.AppletFrame;
+
+import org.bitstorm.gameoflife.ui.AppletFrame;
+import org.bitstorm.gameoflife.uicontrol.StandaloneGameOfLife;
+
 public class main {
 	/**
 	 * main() for standalone version.

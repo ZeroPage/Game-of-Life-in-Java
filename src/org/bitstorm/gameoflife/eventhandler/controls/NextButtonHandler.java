@@ -1,33 +1,33 @@
-package org.bitstorm.gameoflife.eventhandler;
+package org.bitstorm.gameoflife.eventhandler.controls;
 
-import org.bitstorm.gameoflife.uicontrol.GameOfLifeUserControlsEvent;
 import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
+import org.bitstorm.gameoflife.uicontrol.GameOfLifeUserControlsEvent;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import java.util.Vector;
 
-public class StartStopButtonHandler implements ActionListener {
-	private Vector listeners;
+public class NextButtonHandler implements ActionListener{
+	private Vector<CellGameUserControlsListener> listeners;
 	
-	public StartStopButtonHandler(Vector listener){
+	public NextButtonHandler(Vector<CellGameUserControlsListener> listener){
 		this.listeners = listener;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		startStopButtonClicked();
+		nextButtonClicked();
 	}
 	
 	/**
-	 * Called when the start/stop-button is clicked.
+	 * Called when the next-button is clicked.
 	 * Notify event-listeners.
 	 */
-	private void startStopButtonClicked() {
+	private void nextButtonClicked() {
 		GameOfLifeUserControlsEvent event = new GameOfLifeUserControlsEvent( this );
 		for (Enumeration e = listeners.elements(); e.hasMoreElements(); ) {
-			((CellGameUserControlsListener) e.nextElement()).startStopButtonClicked(event);
+			((CellGameUserControlsListener) e.nextElement()).nextButtonClicked(event);
 		}
 	}
 }

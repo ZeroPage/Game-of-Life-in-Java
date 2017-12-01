@@ -9,9 +9,9 @@ import org.bitstorm.gameoflife.cells.Cell;
 import org.bitstorm.gameoflife.cells.CellGrid;
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.gameoflife.cells.ShapeException;
-import org.bitstorm.gameoflife.eventhandler.ResizeHandler;
-import org.bitstorm.gameoflife.eventhandler.DrawHandler;
-import org.bitstorm.gameoflife.eventhandler.DragDrawHandler;
+import org.bitstorm.gameoflife.eventhandler.controls.ResizeHandler;
+import org.bitstorm.gameoflife.eventhandler.grid.DrawHandler;
+import org.bitstorm.gameoflife.eventhandler.grid.DragDrawHandler;
 
 import java.awt.Canvas;
 import java.awt.Color;

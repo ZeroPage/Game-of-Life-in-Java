@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.fileIO;
 
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.util.EasyFile;

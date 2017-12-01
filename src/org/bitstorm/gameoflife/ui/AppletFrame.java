@@ -1,6 +1,9 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.ui;
 
 
+import org.bitstorm.gameoflife.eventhandler.menu.*;
+import org.bitstorm.gameoflife.uicontrol.AWTGameOfLife;
+import org.bitstorm.gameoflife.uicontrol.StandaloneGameOfLife;
 import org.bitstorm.util.AboutDialog;
 import org.bitstorm.util.TextFileDialog;
 
@@ -14,7 +17,7 @@ import java.util.Properties;
  *
  * @author Edwin Martin
  */
-class AppletFrame extends Frame {
+public class AppletFrame extends Frame {
 	private final AWTGameOfLife applet;
 	/**
 	 * Constructor.
@@ -34,18 +37,18 @@ class AppletFrame extends Frame {
 		MenuBar menubar = new MenuBar();
 		Menu fileMenu = new Menu("File", true);
 		MenuItem readMenuItem = new MenuItem( "Open...");
-		readMenuItem.addActionListener(new ReadMenuItemListener(applet, applet.getGameOfLifeGridIO()));
+		readMenuItem.addActionListener(new ReadMenuItemHandler(applet, applet.getGameOfLifeGridIO()));
 		MenuItem writeMenuItem = new MenuItem( "Save...");
-		writeMenuItem.addActionListener(new WriteMenuItemListener(applet.getGameOfLifeGridIO()));
+		writeMenuItem.addActionListener(new WriteMenuItemHandler(applet.getGameOfLifeGridIO()));
 		MenuItem quitMenuItem = new MenuItem( "Exit");
-		quitMenuItem.addActionListener(new QuitMenuItemListener());
+		quitMenuItem.addActionListener(new QuitMenuItemHandler());
 		Menu helpMenu = new Menu("Help", true);
 		MenuItem manualMenuItem = new MenuItem( "Manual");
-		manualMenuItem.addActionListener(new ManualMenuItemListener(this));
+		manualMenuItem.addActionListener(new ManualMenuItemHandler(this));
 		MenuItem licenseMenuItem = new MenuItem( "License");
-		licenseMenuItem.addActionListener(new LicenseMenuItemListener(this));
+		licenseMenuItem.addActionListener(new LicenseMenuItemHandler(this));
 		MenuItem aboutMenuItem = new MenuItem( "About");
-		aboutMenuItem.addActionListener(new AboutMenuItemListener(this));
+		aboutMenuItem.addActionListener(new AboutMenuItemHandler(this));
 		fileMenu.add(readMenuItem);
 		fileMenu.add(writeMenuItem);
 		fileMenu.addSeparator();

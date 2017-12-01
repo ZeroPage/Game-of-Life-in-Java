@@ -1,9 +1,9 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.eventhandler;
 
+import org.bitstorm.gameoflife.uicontrol.AWTGameOfLife;
+import org.bitstorm.gameoflife.uicontrol.CellGame;
+import org.bitstorm.gameoflife.fileIO.CellGridIO;
 
-import org.bitstorm.gameoflife.cells.GameOfLifeGrid;
-
-import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.*;
@@ -19,11 +19,11 @@ import java.net.URL;
  * @author Edwin Martin
  *
  */
-class MyDropListener implements DropTargetListener {
+public class MyDropHandler implements DropTargetListener {
 	private final DataFlavor urlFlavor = new DataFlavor("application/x-java-url; class=java.net.URL", "Game of Life URL");
 	private CellGridIO gridIO;
 	private CellGame game;
-	public MyDropListener(AWTGameOfLife game, CellGridIO gridIO){
+	public MyDropHandler(AWTGameOfLife game, CellGridIO gridIO){
 		this.gridIO = gridIO;
 		this.game = game;
 	}

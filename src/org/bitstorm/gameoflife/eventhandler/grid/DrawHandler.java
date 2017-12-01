@@ -1,7 +1,6 @@
-package org.bitstorm.gameoflife.eventhandler;
+package org.bitstorm.gameoflife.eventhandler.grid;
 
 import org.bitstorm.gameoflife.ui.CellGridDrawer;
-import org.bitstorm.gameoflife.ui.GameOfLifeAWTCellGrid;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
