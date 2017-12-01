@@ -1,6 +1,6 @@
 /**
  * Interface to Game of Life Grid.
- * The CellGridCanvas can deal with any grid, not only the Game of Life.
+ * The GameOfLifeAWTCellGrid can deal with any grid, not only the Game of Life.
  * Copyright 1996-2004 Edwin Martin <edwin@bitstorm.nl>
  * @author Edwin Martin
  */
@@ -11,8 +11,8 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
- * Interface between GameOfLifeCanvas and GameOfLife.
- * This way GameOfLifeCanvas is generic, independent of GameOfLife.
+ * Interface between GameOfLifeCanvas and AWTGameOfLife.
+ * This way GameOfLifeCanvas is generic, independent of AWTGameOfLife.
  * It contains generic methods to operate on a cell grid.
  *
  * @author Edwin Martin

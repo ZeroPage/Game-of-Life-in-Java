@@ -12,18 +12,13 @@
  *
  */
 
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.uicontrol;
 
-import org.bitstorm.gameoflife.cells.GameOfLifeGrid;
-import org.bitstorm.gameoflife.cells.Shape;
-import org.bitstorm.gameoflife.cells.ShapeCollection;
-import org.bitstorm.gameoflife.cells.ShapeException;
+import org.bitstorm.gameoflife.cells.*;
 import org.bitstorm.gameoflife.ui.CellGameUserControls;
-import org.bitstorm.gameoflife.ui.CellGridCanvas;
+import org.bitstorm.gameoflife.ui.CellGridDrawer;
+import org.bitstorm.gameoflife.ui.GameOfLifeAWTCellGrid;
 import org.bitstorm.gameoflife.ui.GameOfLifeUserControls;
-import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsEvent;
-import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
-import org.bitstorm.gameoflife.uicontrol.GameOfLifeUserControlsEvent;
 
 import java.applet.Applet;
 import java.awt.Color;
@@ -35,9 +30,9 @@ import java.awt.GridBagLayout;
  * This is the heart of the program. It initializes everything en put it together.
  * @author Edwin Martin
  */
-public class GameOfLife extends Applet implements CellGame, Runnable{
-	protected CellGridCanvas gameOfLifeCanvas;
-	protected GameOfLifeGrid gameOfLifeGrid;
+public class AWTGameOfLife extends Applet implements CellGame, Runnable{
+	protected CellGridDrawer gameOfLifeCanvas;
+	protected CellGrid gameOfLifeGrid;
 	protected int cellSize;
 	protected int cellCols;
 	protected int cellRows;
@@ -61,7 +56,7 @@ public class GameOfLife extends Applet implements CellGame, Runnable{
 		gameOfLifeGrid.clear();
 
 		// create GameOfLifeCanvas
-		gameOfLifeCanvas = new CellGridCanvas(gameOfLifeGrid, cellSize);
+		gameOfLifeCanvas = new GameOfLifeAWTCellGrid(gameOfLifeGrid, cellSize);
 
 		// create GameOfLifeControls
 		controls = new GameOfLifeUserControls();
@@ -78,8 +73,8 @@ public class GameOfLife extends Applet implements CellGame, Runnable{
         canvasContraints.weightx = 1;
         canvasContraints.weighty = 1;
         canvasContraints.anchor = GridBagConstraints.CENTER;
-        gridbag.setConstraints(gameOfLifeCanvas, canvasContraints);
-        add(gameOfLifeCanvas);
+        gridbag.setConstraints((GameOfLifeAWTCellGrid)gameOfLifeCanvas, canvasContraints);
+        add((GameOfLifeAWTCellGrid)gameOfLifeCanvas);
 
         GridBagConstraints controlsContraints = new GridBagConstraints();
         canvasContraints.gridy = 1;
@@ -137,8 +132,15 @@ public class GameOfLife extends Applet implements CellGame, Runnable{
 			gameThread.start();
 		}
 	}
-
-
+	
+	public CellGridDrawer getGameOfLifeCanvas() {
+		return gameOfLifeCanvas;
+	}
+	
+	public CellGameUserControls getControls() {
+		return controls;
+	}
+	
 	/**
 	 * @see java.applet.Applet#stop()
 	 */
@@ -180,7 +182,7 @@ public class GameOfLife extends Applet implements CellGame, Runnable{
 	@Override
 	public void nextGeneration() {
 		gameOfLifeGrid.next();
-		gameOfLifeCanvas.repaint();
+		((GameOfLifeAWTCellGrid)gameOfLifeCanvas).repaint();
 		showGenerations();
 	}
 	
@@ -203,9 +205,10 @@ public class GameOfLife extends Applet implements CellGame, Runnable{
 	/**
 	 * Resets applet (after loading new shape)
 	 */
+	@Override
 	public void reset() {
 		stop(); // might otherwise confuse user
-		gameOfLifeCanvas.repaint();
+		((GameOfLifeAWTCellGrid)gameOfLifeCanvas).repaint();
 		showGenerations();
 		showStatus( "" );
 	}
@@ -224,6 +227,9 @@ public class GameOfLife extends Applet implements CellGame, Runnable{
 		controls.setGeneration( gameOfLifeGrid.getGenerations() );
 	}
 	
+	public CellGrid getGameOfLifeGrid(){
+		return this.gameOfLifeGrid;
+	}
 	/**
 	 * Set speed of new generations.
 	 * @param fps generations per second

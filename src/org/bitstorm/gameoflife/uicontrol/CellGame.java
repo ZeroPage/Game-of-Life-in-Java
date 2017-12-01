@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.uicontrol;
 
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
@@ -15,4 +15,5 @@ public interface CellGame extends CellGameUserControlsListener {
     void setCellSize(int p);
     int getCellSize();
     void alert(String s);
+    void reset();
 }

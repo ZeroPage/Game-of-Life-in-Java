@@ -1,14 +1,14 @@
-package org.bitstorm.gameoflife.eventhandler;
+package org.bitstorm.gameoflife.eventhandler.controls;
 
-import org.bitstorm.gameoflife.ui.CellGridCanvas;
+import org.bitstorm.gameoflife.ui.GameOfLifeAWTCellGrid;
 
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
-public class CellGridCanvasComponentHandler implements ComponentListener {
-	private CellGridCanvas canvas;
+public class ResizeHandler implements ComponentListener {
+	private GameOfLifeAWTCellGrid canvas;
 	
-	public CellGridCanvasComponentHandler(CellGridCanvas canvas){
+	public ResizeHandler(GameOfLifeAWTCellGrid canvas){
 		this.canvas = canvas;
 	}
 	@Override

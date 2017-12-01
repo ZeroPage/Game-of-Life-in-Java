@@ -27,7 +27,7 @@
 
 	<target depends="init,compile" name="winexe" description="Create executable.">
 		<exec executable="C:\Program Files\Microsoft SDK for Java 4.0\Bin\jexegen.exe">
-			<arg line="/main:org.bitstorm.gameoflife.StandaloneGameOfLife /out:${dist}/GameOfLife.exe /base:${dest} /w /v /r *.*"/>
+			<arg line="/main:org.bitstorm.gameoflife.uicontrol.StandaloneGameOfLife /out:${dist}/GameOfLife.exe /base:${dest} /w /v /r *.*"/>
 		</exec>
 	</target>
 

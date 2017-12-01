@@ -7,10 +7,10 @@
  
 package org.bitstorm.gameoflife.ui;
 
+import org.bitstorm.gameoflife.eventhandler.controls.*;
 import org.bitstorm.gameoflife.uicontrol.CellGameUserControlsListener;
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.gameoflife.cells.ShapeCollection;
-import org.bitstorm.gameoflife.eventhandler.*;
 
 import java.awt.Button;
 import java.awt.Choice;
@@ -27,6 +27,7 @@ import java.util.Vector;
  * @author Edwin Martin
  *
  */
+
 public class GameOfLifeUserControls extends Panel implements CellGameUserControls {
 	private Label genLabel;
 	private final String genLabelText = "Generations: ";
@@ -157,8 +158,8 @@ public class GameOfLifeUserControls extends Panel implements CellGameUserControl
 	@Override
 	public void start() {
 		startstopButton.setLabel(stopLabelText);
-		nextButton.disable();
-		shapesChoice.disable();
+		nextButton.setEnabled(false);
+		shapesChoice.setEnabled(false);
 	}
 
 	/**
@@ -167,8 +168,8 @@ public class GameOfLifeUserControls extends Panel implements CellGameUserControl
 	@Override
 	public void stop() {
 		startstopButton.setLabel(startLabelText);
-		nextButton.enable();
-		shapesChoice.enable();
+		nextButton.setEnabled(true);
+		shapesChoice.setEnabled(true);
 	}
 	
 	/**
