@@ -9,7 +9,7 @@ import org.bitstorm.gameoflife.cells.Cell;
 import org.bitstorm.gameoflife.cells.CellGrid;
 import org.bitstorm.gameoflife.cells.Shape;
 import org.bitstorm.gameoflife.cells.ShapeException;
-import org.bitstorm.gameoflife.eventhandler.controls.ResizeHandler;
+import org.bitstorm.gameoflife.eventhandler.grid.ResizeHandler;
 import org.bitstorm.gameoflife.eventhandler.grid.DrawHandler;
 import org.bitstorm.gameoflife.eventhandler.grid.DragDrawHandler;
 

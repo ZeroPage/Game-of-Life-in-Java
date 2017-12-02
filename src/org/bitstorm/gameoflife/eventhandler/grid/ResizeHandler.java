@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife.eventhandler.controls;
+package org.bitstorm.gameoflife.eventhandler.grid;
 
 import org.bitstorm.gameoflife.ui.GameOfLifeAWTCellGrid;
 
