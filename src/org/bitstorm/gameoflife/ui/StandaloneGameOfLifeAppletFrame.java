@@ -17,14 +17,14 @@ import java.util.Properties;
  *
  * @author Edwin Martin
  */
-public class AppletFrame extends Frame {
+public class StandaloneGameOfLifeAppletFrame extends Frame {
 	private final AWTGameOfLife applet;
 	/**
 	 * Constructor.
 	 * @param title title of window
 	 * @param applet applet to show
 	 */
-	public AppletFrame(String title, StandaloneGameOfLife applet) throws MalformedURLException {
+	public StandaloneGameOfLifeAppletFrame(String title, StandaloneGameOfLife applet) throws MalformedURLException {
 		super( title );
 		this.applet = applet;
 		
