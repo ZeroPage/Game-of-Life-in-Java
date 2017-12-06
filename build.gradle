@@ -14,7 +14,7 @@ sourceSets {
     }
 }
 
-mainClassName = "org.bitstorm.gameoflife.main"
+mainClassName = "org.bitstorm.gameoflife.StandaloneGameOfLifeMain"
 
 
 tasks.withType(JavaCompile) {
